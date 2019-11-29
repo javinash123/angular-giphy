@@ -1,0 +1,16 @@
+<div class="container content">
+	<section class="section is-small">
+	  <div class="container">
+	  	<div class="active-purple-4 mb-4">
+	  	  <!-- Search form -->
+		  <input class="form-control" type="text" placeholder="Search" [(ngModel)]="filter" name="search" aria-label="Search">
+		</div>
+	  	<div class="row">
+		    <div class="col-md-4" *ngFor="let user of users.data | filter:filter | paginate: { itemsPerPage: 9, currentPage: p }; let i = index"><img [src]="user.images.downsized_large.url"/>
+	        <p class="is-size-5">{{user.title}}</p></div>
+	  	</div>
+	  	
+	  </div>
+	</section>
+	<pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
